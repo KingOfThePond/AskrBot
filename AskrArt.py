@@ -2,7 +2,7 @@ import discord
 import asyncio
 from twython import Twython
 
-import info_keys
+from .. import info_keys
 from cmds.bot import Bot
 
 from cmds.projectManager import project_manager
@@ -33,4 +33,3 @@ async def on_message(message):
 
 command_dict = load_commands()
 client.run(info_keys.BOT_TOKEN)
-
