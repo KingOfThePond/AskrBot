@@ -22,16 +22,14 @@ client = Bot.client
 twitter = Twython(info_keys.TWITTER_KEY, info_keys.TWITTER_SECRET, info_keys.TWITTER_TOKEN, info_keys.TWITTER_TOKEN_SECRET)
 
 @client.event
-@asyncio.coroutine
-def on_ready():
+async def on_ready():
     print('Ready!')
 
 @client.event
-@asyncio.coroutine
-def on_message(message):
+async def on_message(message):
     if message.content.startswith('>'):
         command = message.content.split(' ')[0][1::]
-        yield from command_dict[command].do_command(message)
+        await command_dict[command].do_command(message)
 
 command_dict = load_commands()
 client.run(info_keys.BOT_TOKEN)
